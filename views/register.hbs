@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   <link rel="stylesheet" href="/style.css">
-  <title>Order Tracker</title>
+  <title>Document</title>
 </head>
 <body>
   <nav>
@@ -23,17 +23,16 @@
         Register Form
       </div>
       <div class="card-body">
-        <form action="/auth/register" method="POST">
+        <form action="/users/register" method="POST">
           <div class="form-group">
-            <label for="name">FirstName</label>
-            <input type="text" class="form-control" id="FirstName" name="FirstName">
+            <label for="firstName">FirstName</label>
+            <input type="text" class="form-control" 
+            id="firstName" name="firstName">
           </div>
-
-         <div class="form-group">
-            <label for="LastName">LastName</label>
-            <input type="text" class="form-control" id="LastName" name="LastName">
+ <div class="form-group">
+            <label for="lastName">LastName</label>
+            <input type="text" class="form-control" id="lastName" name="lastName">
           </div>
-
           <div class="form-group">
             <label for="email">Email Address</label>
             <input type="email" class="form-control" id="email" name="email">
@@ -45,8 +44,8 @@
           </div>
 
           <div class="form-group">
-            <label for="passwordConfirm">Confirm Password</label>
-            <input type="password" class="form-control" id="passwordConfirm" name="passwordConfirm">
+            <label for="password2">Confirm Password</label>
+            <input type="password2" class="form-control" id="password2" name="password2">
           </div>
           
           <button type="submit" class="btn btn-primary">Register User</button>
