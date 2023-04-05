@@ -1,0 +1,142 @@
+<%- include('../../includes/header') -%>
+
+<div class="d-flex justify-content-between flex-wrap flex-md nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+  <h1 class="h2">Medical Professional</h1>
+  <div class="btn-toolbar mb-2 mb-md 0">
+    <div class="btn-group me-2">
+      <button class="btn btn-sm btn-outline-secondary">?</button>
+    </div>
+  </div>
+</div>
+
+<div class="col py-3">
+  <div class="row">
+    <div class="col">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
+          <li class="breadcrumb-item active">New Profession</li>
+        </ol>
+      </nav>
+    </div>
+ 
+  </div>
+
+</div>
+
+
+<form action="/api/secure/medicalProfessional/add" method="POST">
+    <input type="hidden" name="medicalpractic" value="<%= medicalPractice._id %>" >
+    <input type="hidden" name="medicalphone" value="<%= medicalPractice.phone %>" >
+    <input type="hidden" name="medicalfax" value="<%= medicalPractice.fax %>" >
+  <div class="row form-group mb-4">
+    <div class="col">
+      <label for="name">Practice Name</label>
+      <input type="text" class="form-control" id="name" name="name" value="" placeholder="Profession Name" required>
+    </div>
+
+    <div class="col">
+      <label for="lastName">Last Name</label>
+      <input type="text" class="form-control" id="lastName" name="lastName"   placeholder="Last Name" required>
+    </div>
+  </div>
+
+  <div class="row form-group mb-4">
+    <div class="col">
+      <label for="email">Email</label>
+      <input type="text" class="form-control" id="email" name="email" value="" placeholder="email" required>
+    </div>
+
+    <div class="col">
+      <label for="medProType">MedPro Type</label>
+      <input type="text" class="form-control" id="medProType" name="medProType" value="" placeholder="medProType" required>
+    </div>
+  
+  </div>
+  <div class="row form-group mb-4">
+    <div class="col">
+      <label for="Phone">Phone</label>
+      <input type="text" class="form-control" id="phone" name="phone" readonly value="<%= medicalPractice.phone %>" placeholder="medProType" required>
+    </div>
+    <div class="col">
+      <label for="lastRef">lastRef</label>
+      <input type="text" class="form-control" id="lastRef" name="lastRef" value="" placeholder="lastRef" required>
+    </div>
+    
+  </div>
+  <div class="row form-group mb-4">
+    <div class="col">
+      <label for="fax">Fax</label>
+      <input type="text" class="form-control" id="fax" name="fax" readonly value="<%= medicalPractice.fax %>" placeholder="Fax" required>
+    </div>
+    <div class="col">
+      <label for="Status">Status</label>
+      <input type="text" class="form-control" id="status" name="status" value="" placeholder="Status" required>
+    </div>
+  </div>
+  <div class="form-group mb-4">
+    <button type="submit" class="btn btn-primary">Add </button>
+  </div>
+
+</form>
+
+<div class="table-responsive">
+
+  <div class="table-responsive">
+
+    <table class="table table-striped table-sm">  
+      <thead>
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Last Name</th>
+          <th scope="col">MedProType</th>
+          <th scope="col">Email</th>
+          <th scope="col">phone</th> 
+          <th scope="col">Fax</th>
+          <th scope="col">lastRef</th>
+          <th scope="col" class="text-end">Status</th>
+        </tr>
+      </thead>
+  
+
+      <tbody>
+        <% medicalProfessional.forEach(element => { %>
+          <tr class="align-middle">
+            <td><%= element.name %></td>
+            <td><%= element.lastName %></td>
+            <td><%= element.medProType %></td> 
+            <td><%= element.email %></td>
+            <td><%= element.phone %></td>
+            <td><%= element.fax %></td>
+            <td><%= element.lastRef %></td>
+            <td><%= element.status %></td>
+            <td class="text-end">
+  
+              <div class="d-flex flex-row justify-content-end gap-2">
+  
+                <a href="/medicalprofessional/add/<%= element._id %>" type="button" class="btn btn-primary btn-small">
+                  <i class="bi bi-eye"></i>
+                </a>
+  
+                <a href="/edit/<%= element._id %>" type="button" class="btn btn-warning btn-small">
+                  <i class="bi bi-pencil"></i>
+                </a>
+  
+                <form action="/edit/<%= element._id %>?_method=DELETE" method="POST" class="position-relative">
+                  <button type="submit" class="btn btn-danger btn-small">
+                    <i class="bi bi-person-x"></i>
+                  </button>
+                </form>
+  
+              </div>
+  
+  
+            </td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<%- include('../../includes/footer') -%>

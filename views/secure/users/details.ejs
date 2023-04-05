@@ -1,0 +1,188 @@
+<%- include('../../includes/header') -%>
+    <div id="main">
+        <div class="page-content">
+            <div class="page-heading">
+                <h3>User -
+                    <%=record.username%>
+                </h3>
+            </div>
+            <section>
+                <div class="row">
+                    <div class="card">
+                        <%- include('../../includes/message') %>
+                            <div class="card-body">
+                                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                    <li class="nav-item" role="presentation"> <a class="nav-link active" id="home-tab" data-bs-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Home</a> </li>
+                                    <li class="nav-item" role="presentation"> <a class="nav-link" id="profile-tab" data-bs-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Transactions</a> </li>
+                                    <li class="nav-item" role="presentation"> <a class="nav-link" id="contact-tab" data-bs-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">History</a> </li>
+                                </ul>
+                                <div class="tab-content" id="myTabContent">
+                                    <div class="tab-pane fade active show" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                        <form class="form form-vertical user_datil" action="/secure/user/edit" method="POST">
+                                            <input type="hidden" name="_csrf" value="<%=_csrf%>">
+                                            <div class="form-body">
+                                                <div class="row">
+                                                    <div class="col-12 col-sm-6">
+                                                        <div class="form-group">
+                                                            <label for="first-name-vertical">Credits</label>
+                                                            <input type="text" id="first-name-vertical" class="form-control text-center" disabled name="credits" placeholder="" value="<%=record.credits%>"> </div>
+                                                    </div>
+                                                    <!-- <div class="col-12 col-sm-6">
+                                            <div class="form-group">
+                                                <label for="Password ">Password</label>
+                                                <div class="input-group  ">
+                                                    <input type="text" class="form-control" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
+                                                    <button class="btn btn-primary" type="button" id="button-addon1">Save</button>
+                                                </div>
+                                            </div>
+                                        </div> -->
+                                                    <input type="hidden" value="<%=record._id%>" name="id">
+                                                    <div class="col-12 col-sm-6">
+                                                        <div class="form-group">
+                                                            <label for="firstName">First Name </label>
+                                                            <input type="text" id="firstName" class="form-control" name="firstName" placeholder="First Name" value="<%=record.firstName%>"> </div>
+                                                    </div>
+                                                    <div class="col-12 col-sm-6">
+                                                        <div class="form-group">
+                                                            <label for="lastName">Last Name </label>
+                                                            <input type="text" id="lastName" class="form-control" name="lastName" placeholder="Last Name" value="<%=record.lastName%>"> </div>
+                                                    </div>
+                                                    <div class="col-12 col-sm-6">
+                                                        <div class="form-group">
+                                                            <label for="Pin ">Password</label>
+                                                            <input type="password" id="password" class="form-control" name="password" placeholder="Password"> </div>
+                                                    </div>
+                                                    <!-- <div class="col-12 col-sm-6">
+                                            <div class="form-group">
+                                                <label for="IP ">IP</label>
+                                                <input type="text" id="IP " class="form-control" name="IP" disabled placeholder="IP"> </div>
+                                        </div>
+                                        <div class="col-12 col-sm-6">
+                                            <div class="form-group">
+                                                <label for="URL ">URL</label>
+                                                <input type="text" id="URL  " class="form-control" name="URL" disabled placeholder="URL"> </div>
+                                        </div>
+                                        <div class="col-12 col-sm-6">
+                                            <div class="form-group">
+                                                <label for="URL ">Api Userhash</label>
+                                                <input type="text" id="Api_Userhash  " class="form-control" name="Api_Userhash" disabled placeholder="URL"> </div>
+                                        </div> -->
+                                                    <!-- <div class="col-12 col-sm-6"> -->
+                                                    <!-- <div class="form-group">
+                                                <label for="URL ">Family</label>
+                                                <nav aria-label="breadcrumb">
+                                                    <ol class="breadcrumb">
+                                                        <li class="breadcrumb-item"><a href="#">KevinGreenwood </a></li>
+                                                        <li class="breadcrumb-item active" aria-current="page"> intertechvx</li>
+                                                    </ol>
+                                                </nav>
+                                            </div> -->
+                                                    <!-- </div> -->
+                                                    <!-- <div class="col-12 ">
+                                            <div class="pin_tick">
+                                                <div class="form-check">
+                                                    <div class="checkbox">
+                                                        <input type="checkbox" id="Pin_2" class="form-check-input" checked="">
+                                                        <label for="Pin_2">Pin</label>
+                                                    </div>
+                                                </div>
+                                                <div class="form-check">
+                                                    <div class="checkbox">
+                                                        <input type="checkbox" id="Reset" class="form-check-input" checked="">
+                                                        <label for="Reset">Reset VLT</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div> -->
+                                                    <div class="col-12 col-sm-6">
+                                                        <div class="card">
+                                                            <label for="password-id-icon">Role</label>
+                                                            <select class="choices form-select" name="role">
+                                                    <option value="USER" <%= record.role == 'USER'? 'selected' : '' %>>User</option>
+                                                    <option value="ADMIN" <%= record.role == 'ADMIN'? 'selected' : '' %>>Admin</option>
+                                                    <option value="SUPER_ADMIN" <%= record.role == 'SUPER_ADMIN'? 'selected' : '' %>>Super Admin</option>
+                                                </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12 col-sm-6">
+                                                        <div class="card">
+                                                            <label for="password-id-icon">Ability</label>
+                                                            <select class="choices form-select" name="status">
+                                                    <option value="ENABLED" <%= record.status == 'ENABLED'? 'selected' : '' %>>Enabled</option>
+                                                    <option value="DISABLED" <%= record.status == 'DISABLED'? 'selected' : '' %>>Disabled</option>
+                                                    <option value="PANIC" <%= record.status == 'PANIC'? 'selected' : '' %>>Panic</option>
+                                                </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12 col-sm-6 d-flex justify-content-end">
+                                                        <button type="submit" class="btn btn-primary me-1 mb-1">Save</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                                        <div class="row">
+                                            <div class="col-12 col-lg-12">
+                                                <section class="section Transactions_table">
+                                                    <h6 class="text-center mt-4">2000 records limit</h6>
+                                                    <div class="card user_detai_table">
+                                                        <div class="card-body">
+                                                            <table class="table table-striped" id="table1">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th class="">From</th>
+                                                                        <th>In</th>
+                                                                        <th>Out</th>
+                                                                        <th>Date</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <td>intertechvx</td>
+                                                                        <td>0.00</td>
+                                                                        <td>100.00</td>
+                                                                        <td>2021-09-16 22:22:10</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>intertechvx</td>
+                                                                        <td>0.00</td>
+                                                                        <td>100.00</td>
+                                                                        <td>2021-09-16 22:22:10</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>intertechvx</td>
+                                                                        <td>0.00</td>
+                                                                        <td>100.00</td>
+                                                                        <td>2021-09-16 22:22:10</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>intertechvx</td>
+                                                                        <td>0.00</td>
+                                                                        <td>100.00</td>
+                                                                        <td>2021-09-16 22:22:10</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>intertechvx</td>
+                                                                        <td>0.00</td>
+                                                                        <td>100.00</td>
+                                                                        <td>2021-09-16 22:22:10</td>
+                                                                    </tr>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </section>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                                        <p class="mt-2">Duis ultrices purus non eros fermentum hendrerit. Aenean ornare interdum viverra. Sed ut odio velit. Aenean eu diam dictum nibh rhoncus mattis quis ac risus. Vivamus eu congue ipsum. Maecenas id sollicitudin ex.
+                                            Cras in ex vestibulum, posuere orci at, sollicitudin purus. Morbi mollis elementum enim, in cursus sem placerat ut.</p>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <%- include('../../includes/footer') -%>

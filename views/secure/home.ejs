@@ -1,0 +1,26 @@
+<%- include('../includes/header') -%>
+<div id="main">
+    <div class="d-flex justify-content-between flex-wrap flex-md nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h2">Medical Practice</h1>
+        <div class="btn-toolbar mb-2 mb-md 0">
+          <div class="btn-group me-2">
+            <a href="/medicalpractic/add" class="btn btn-sm btn-outline-secondary">+ New MP</a>
+          </div>
+        </div>
+      </div>
+      <div class="d-flex justify-content-between flex-wrap flex-md nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h2">Medical Patient</h1>
+        <div class="btn-toolbar mb-2 mb-md 0">
+          <div class="btn-group me-2">
+            <a href="/medicalpractic/add" class="btn btn-sm btn-outline-secondary">+ P</a>
+          </div>
+        </div>
+      </div>
+</div>
+<script>
+    var deviceChart = `<%= deviceChart %>`
+    var days = `<%= days %>`;
+    var gameTimePerday =`<%= gameTimePerday%>`
+    var timePerday = `<%= timePerday %>`;
+    var timePrday = `<%= timePrday %>`;
+</script>

@@ -1,0 +1,78 @@
+<script src="/constants.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.js"></script>
+<script src="/assets/js/bootstrap.bundle.min.js"></script>
+<script src="/assets/vendors/simple-datatables/simple-datatables.js"></script>
+<script>
+    // Simple Datatable
+    let table1 = document.querySelector('#table1');
+    let dataTable = new simpleDatatables.DataTable(table1);
+</script>
+<script src="/assets/js/mazer.js"></script>
+<script src="/assets/js/choices.js"></script>
+<script>
+    const choices = new Choices('[data-trigger]', {
+        searchEnabled: false,
+        itemSelectText: '',
+    });
+    jQuery(document).ready(function($) {
+        setTimeout(() => {
+            $('.alert-success').hide();
+        }, 3000);
+    })
+</script>
+<%if(page=='home'){%>
+          <!-- chartjs all file-->
+   <script src="/assets/vendors/dayjs/dayjs.min.js"></script>
+   <script src="/assets/vendors/apexcharts/apexcharts.js"></script> 
+   <script src="/assets/js/pages/ui-apexchart.js"></script>
+   <script src="/assets/vendors/chartjs/Chart.min.js"></script>
+   <script src="/assets/js/pages/ui-chartjs.js"></script>
+    <script src="/assets/js/pie_chart.js"></script>  
+   <script src="https://unpkg.com/chart.js@3"></script>
+   <script src="https://unpkg.com/chartjs-chart-geo@3"></script>
+   <script src="/assets/js/custom_chart.js"></script>
+
+    
+
+
+   <script type="text/javascript">
+    fetch('https://unpkg.com/us-atlas/states-10m.json').then((r) => r.json()).then((us) => {
+ const nation = ChartGeo.topojson.feature(us, us.objects.nation).features[0];
+ const states = ChartGeo.topojson.feature(us, us.objects.states).features;
+
+ const chart = new Chart(document.getElementById("canvas").getContext("2d"), {
+   type: 'choropleth',
+   data: {
+     labels: states.map((d) => d.properties.name),
+     datasets: [{
+       label: 'States',
+       outline: nation,
+       data: states.map((d) => ({feature: d, value: Math.random() * 10})),
+     }]
+   },
+   options: {
+     plugins: {
+       legend: {
+         display: false
+       },
+     },
+     scales: {
+       xy: {
+         projection: 'albersUsa'  
+       },
+       color: {
+         quantize: 5,
+         legend: {
+           position: 'bottom-right',
+           align: 'bottom'
+         },
+       }
+     },
+   }
+ });
+});
+</script> 
+<%}%>
+</body>
+
+</html>

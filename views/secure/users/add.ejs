@@ -1,0 +1,97 @@
+<%- include('../../includes/header') -%>
+    <div id="main">
+        <div class="page-content">
+            <section class="row">
+                <div class="col-12 col-lg-12">
+                    <<%- include( '../../includes/message') %> >
+                        <section class="section Transactions_table custom_section">
+                            <div class="card cutstom_style mb-5">
+                                <div class="card-body">
+                                    <h3 class="text-center mb-3">Profile</h3>
+                                    <form class="form form-vertical" action="/secure/user/add" method="POST">
+                                        <input type="hidden" name="_csrf" value="<%=_csrf%>">
+                                        <div class="form-body">
+                                            <div class="row">
+                                                <div class="col-12 col-sm-12">
+                                                    <div class="form-group has-icon-left">
+                                                        <label for="first-name-icon">Username</label>
+                                                        <div class="position-relative">
+                                                            <input type="text" class="form-control" placeholder="Unique Username" name="username" id="first-name-icon" required value="<%=flash.form.username%>">
+                                                            <div class="form-control-icon"> <i class="bi bi-person"></i> </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group has-icon-left">
+                                                        <label for="first-name-icon">Email</label>
+                                                        <div class="position-relative">
+                                                            <input type="email" class="form-control" placeholder="Unique Username" name="email" id="first-name-icon" value="<%=flash.form.email%>">
+                                                            <div class="form-control-icon"> <i class="bi bi-person"></i> </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-sm-12">
+                                                    <div class="form-group has-icon-left">
+                                                        <label for="first-name-icon">First Name</label>
+                                                        <div class="position-relative">
+                                                            <input type="text" class="form-control" placeholder="First Name" name="firstName" id="first-name-icon" required value="<%=flash.form.firstName%>">
+                                                            <div class="form-control-icon"> <i class="bi bi-person"></i> </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-sm-12">
+                                                    <div class="form-group has-icon-left">
+                                                        <label for="first-name-icon">Last Name</label>
+                                                        <div class="position-relative">
+                                                            <input type="text" class="form-control" placeholder="Last Name" name="lastName" id="first-name-icon" required value="<%=flash.form.lastName%>">
+                                                            <div class="form-control-icon"> <i class="bi bi-person"></i> </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- <div class="col-12 col-sm-12">
+                                        <div class="form-group  ">
+                                            <label for="api-id-icon">API KEY</label>
+                                            <div class="position-relative">
+                                                <input type="test" class="form-control" placeholder="0a441a4feaf7741de834bb6ed4ce2540" id="api-id-icon"> </div>
+                                        </div>
+                                    </div> -->
+                                                <div class="col-12 col-sm-12">
+                                                    <div class="col-12 col-sm-12">
+                                                        <div class="form-group has-icon-left">
+                                                            <label for="password-id-icon">Password</label>
+                                                            <div class="position-relative">
+                                                                <input type="password" class="form-control" placeholder="Password atleast 6 characters" id="password-id-icon" name="password" required value="<%=flash.form.password%>">
+                                                                <div class="form-control-icon"> <i class="bi bi-lock"></i> </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12 col-sm-12">
+                                                        <div class="form-group has-icon-left">
+                                                            <label for="password-id-icon">Confirm New Password</label>
+                                                            <div class="position-relative">
+                                                                <input type="password" class="form-control" placeholder="Repeat Password" id="password-id-icon" name="confirm-password" required required value="<%=flash.form.confirm-password%>">
+                                                                <div class="form-control-icon"> <i class="bi bi-lock"></i> </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12 col-sm-12">
+                                                        <div class="card">
+                                                            <label for="password-id-icon">Role</label>
+                                                            <select class="choices form-select" name="role" required>
+                                                        <option value="USER">User</option>
+                                                        <option value="ADMIN">Admin</option>
+                                                        <option value="SUPER_ADMIN">Super Admin</option>
+                                                    </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 d-flex justify-content-end">
+                                                    <button type="submit" class="btn btn-primary me-1 mb-1 d-block w-100">Add</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                        </section>
+                        </div>
+                        </div>
+            </section>
+            </div>
+            <%- include('../../includes/footer') -%>
