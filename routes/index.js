@@ -100,7 +100,7 @@ const routeInitalizer = (app) => {
       const medicalProfessional = await MedicalProfessional.findOne({_id:req.params.id})
       const medicalPatient = await MedicalPatient.find({})
       console.log("Patient",medicalPatient)
-    renderController.render(res, 'secure/medicalPatient/add', { page: 'add', medicalPatient,medicalProfessional })
+    renderController.render(res, 'secure/medicalpatient/add', { page: 'add', medicalPatient,medicalProfessional })
   });
     app.use('/api', buildRoutesForPath(`${ROUTES_PATH}/api`));
     app.use('/public', buildRoutesForPath(`${ROUTES_PATH}/public`));
