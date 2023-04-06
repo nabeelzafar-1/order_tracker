@@ -132,14 +132,14 @@ exports.editPost = async (req, res) => {
       name: req.body.name,
       lastName:req.body.lastName,
       medProType: req.body.medProType,
-      phone:req.body.medicalphone,
-      fax:req.body.medicalfax,
+      phone:req.body.phone,
+      fax:req.body.fax,
       email: req.body.email,
       lastRef: req.body.lastRef,
       status: req.body.status,
       updatedAt: Date.now()
     });
-    await res.redirect(`/edit/${req.params.id}`);
+    await res.redirect(`/medicalprofessional/edit/${req.params.id}`);
     
     console.log('redirected');
   } catch (error) {
@@ -155,7 +155,7 @@ exports.editPost = async (req, res) => {
 exports.deleteProfessional = async (req, res) => {
   try {
     await MedicalProfessional.deleteOne({ _id: req.params.id });
-    res.redirect("/")
+    res.redirect(`/medicalprofessional/add/${req.params.id}`)
   } catch (error) {
     console.log(error);
   }

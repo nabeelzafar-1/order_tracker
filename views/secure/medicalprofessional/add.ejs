@@ -96,11 +96,11 @@
         <tr>
           <th scope="col">Name</th>
           <th scope="col">Last Name</th>
-          <th scope="col">MedProType</th>
+          <th scope="col">MedPro Type</th>
           <th scope="col">Email</th>
           <th scope="col">phone</th> 
           <th scope="col">Fax</th>
-          <th scope="col">lastRef</th>
+          <th scope="col">Last Ref</th>
           <th scope="col" class="text-end">Status</th>
         </tr>
       </thead>
@@ -121,26 +121,21 @@
   
               <div class="d-flex flex-row justify-content-end gap-2">
   
-                <a href="/medicalprofessional/add/<%= element._id %>" type="button" class="btn btn-primary btn-small">
+                <a href="/medicalprofessional/view/<%= element._id %>" type="button" class="btn btn-primary btn-small">
                   <i class="bi bi-eye"></i>
                 </a>
                 <a href="/medicalpatient/add/<%= element._id %>" type="button"
                   class="btn btn-primary btn-small a">
                   <small>Patient</small>
                 </a>
-                <a href="/edit/<%= element._id %>" type="button" class="btn btn-warning btn-small">
+                <a href="/medicalprofessional/edit/<%= element._id %>" type="button" class="btn btn-warning btn-small">
                   <i class="bi bi-pencil"></i>
                 </a>
-  
-                <form action="/edit/<%= element._id %>?_method=DELETE" method="POST" class="position-relative">
-                  <button type="submit" class="btn btn-danger btn-small">
-                    <i class="bi bi-person-x"></i>
-                  </button>
-                </form>
-  
+                <a href="/api/secure/medicalProfessional/delete/<%= element._id %>" class="btn btn-danger btn-small">
+                    
+                  <i class="bi bi-person-x"></i>
+                </a>
               </div>
-  
-  
             </td>
           </tr>
         <% }) %>

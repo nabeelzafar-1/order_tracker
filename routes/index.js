@@ -69,9 +69,19 @@ const routeInitalizer = (app) => {
         // console.log("in route ///", req.flash('error'));
         renderController.render(res, '403', { page: '403' })
     });
+
+/**
+* POST /
+*Register User 
+*/
     app.get('/register', (req, res, next) => {
       renderController.render(res, 'public/register', { page: 'register' })
     });
+
+/**
+* ROutes /
+*medicalpractic  
+*/    
     app.get('/medicalpractic/add', async(req, res, next) => {
       const medicalPractice = await MedicalPractice.find({})
       console.log("cu",medicalPractice)
@@ -79,7 +89,7 @@ const routeInitalizer = (app) => {
     });
     app.get('/view/:id', async(req, res, next) => {
       const medicalPractice = await MedicalPractice.find({})
-      console.log("view",medicalPractice)
+      console.log("viewss",medicalPractice)
       renderController.render(res, 'secure/medicalPractices/view', { page: 'view', medicalPractice})
     });
     app.get('/edit/:id', async(req, res, next) => {
@@ -88,6 +98,10 @@ const routeInitalizer = (app) => {
       renderController.render(res, 'secure/medicalPractices/edit', { page: 'edit', medicalPractice})
     });
  
+/**
+* ROutes /
+*medicalprofessional 
+*/ 
 
     app.get('/medicalprofessional/add/:id', async(req, res, next) => {
         const medicalPractice = await MedicalPractice.findOne({_id:req.params.id})
@@ -95,12 +109,36 @@ const routeInitalizer = (app) => {
         console.log("md",medicalPractice)
       renderController.render(res, 'secure/medicalprofessional/add', { page: 'add', medicalPractice,medicalProfessional })
     });
+    app.get('/medicalprofessional/view/:id', async(req, res, next) => {
+      const medicalProfessionals = await MedicalProfessional.find({})
+      console.log("view",medicalProfessionals)
+      renderController.render(res, 'secure/medicalprofessional/view', { page: 'view', medicalProfessionals})
+    });
+    app.get('/medicalprofessional/edit/:id', async(req, res, next) => {
+      const medicalProfessional = await MedicalProfessional.findOne({_id:req.params.id})
+      console.log("edit",medicalProfessional)
+      renderController.render(res, 'secure/medicalprofessional/edit', { page: 'edit', medicalProfessional})
+    });
 
+/**
+* ROutes /
+*medicalpatient 
+*/     
     app.get('/medicalpatient/add/:id', async(req, res, next) => {
       const medicalProfessional = await MedicalProfessional.findOne({_id:req.params.id})
       const medicalPatient = await MedicalPatient.find({})
       console.log("Patient",medicalPatient)
     renderController.render(res, 'secure/medicalpatient/add', { page: 'add', medicalPatient,medicalProfessional })
+  });
+  app.get('/medicalpatient/view/:id', async(req, res, next) => {
+    const medicalPatient = await MedicalPatient.find({})
+    console.log("view",medicalPatient)
+    renderController.render(res, 'secure/medicalpatient/view', { page: 'view', medicalPatient})
+  });
+  app.get('/medicalpatient/edit/:id', async(req, res, next) => {
+    const medicalPatient = await MedicalPatient.findOne({_id:req.params.id})
+    console.log("edit",medicalPatient)
+    renderController.render(res, 'secure/medicalpatient/edit', { page: 'edit', medicalPatient})
   });
     app.use('/api', buildRoutesForPath(`${ROUTES_PATH}/api`));
     app.use('/public', buildRoutesForPath(`${ROUTES_PATH}/public`));

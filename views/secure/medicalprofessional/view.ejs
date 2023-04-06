@@ -1,10 +1,7 @@
+<%- include('../../includes/header') -%>
+
 <div class="d-flex justify-content-between flex-wrap flex-md nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-  <h1 class="h2"><%= .firstName  %> <%= .lastName  %></h1>
   <div class="btn-toolbar mb-2 mb-md 0">
-    <div class="btn-group me-2">
-      <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
-      <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
-    </div>
   </div>
 </div>
 
@@ -15,13 +12,12 @@
       <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
-          <li class="breadcrumb-item active"><%= .firstName  %></li>
+          <li class="breadcrumb-item active"><%= medicalProfessionals.name  %></li>
         </ol>
       </nav>
     </div>
     <div class="col text-end fw-lighter">
-      <b>Last Updated <%= new Date(.updatedAt).toUTCString() %> </b>
-      <b>UserId:</b> <%= ._id %>
+      <b>UserId:</b> <%= medicalProfessionals._id %>
     </div>
   </div>
 
@@ -32,43 +28,46 @@
   <li class="list-group-item"> 
     <div class="row">
       <div class="col" style="max-width: 140px"> <b>Name:</b></div>
-      <div class="col"><%= .firstName %> <%= .lastName %></div>
+      <div class="col"><%= medicalProfessionals.name %></div>
     </div>
   </li>
 
   <li class="list-group-item"> 
     <div class="row">
-      <div class="col" style="max-width: 140px"> <b>Tel:</b></div>
-      <div class="col"><%= .tel %></div>
+      <div class="col" style="max-width: 140px"> <b>lastName:</b></div>
+      <div class="col"><%= medicalProfessionals.lastName %></div>
     </div>
   </li>
 
   <li class="list-group-item"> 
     <div class="row">
-      <div class="col" style="max-width: 140px"> <b>Email:</b></div>
-      <div class="col"><%= .email %></div>
+      <div class="col" style="max-width: 140px"> <b>medProType:</b></div>
+      <div class="col"><%= medicalProfessionals.medProType %></div>
     </div>
   </li>
 
   <li class="list-group-item"> 
     <div class="row">
-      <div class="col" style="max-width: 140px"> <b>Details:</b></div>
-      <div class="col"><%= .details %></div>
+      <div class="col" style="max-width: 140px"> <b>phone:</b></div>
+      <div class="col"><%= medicalProfessionals.phone %></div>
     </div>
   </li>
 
   <li class="list-group-item"> 
     <div class="row">
-      <div class="col" style="max-width: 140px"> <b>Date Created:</b></div>
-      <div class="col"><%= .createdAt %></div>
+      <div class="col" style="max-width: 140px"> <b>fax:</b></div>
+      <div class="col"><%= medicalProfessionals.fax %></div>
     </div>
   </li>
 
   <li class="list-group-item"> 
     <div class="row">
       <div class="col" style="max-width: 140px"> <b>Date Modified:</b></div>
-      <div class="col"><%= .updatedAt %></div>
+      <div class="col"><%= medicalProfessionals.updatedAt %></div>
     </div>
   </li>
 
 </ul>
+
+
+<%- include('../../includes/footer') -%>

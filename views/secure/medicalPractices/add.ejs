@@ -29,7 +29,6 @@
 
 
     <form action="/api/secure/medicalPractice/add" method="POST" name="f1" onsubmit="return validate()">
-
       <div class="row form-group mb-4">
         <div class="col">
           <label for="practiceName">Practice Name</label>
@@ -46,9 +45,9 @@
       </div>
       <div class="row form-group mb-4">
         <div class="col">
-          <label for="mailingAddress">Mail Address</label>
+          <label for="mailingAddress">Mailing Address</label>
           <input type="text" class="form-control" id="mailingAddress" name="mailingAddress" value=""
-            placeholder="Mail Address" required>
+            placeholder="Mailing Address" required>
         </div>
 
         <div class="col">
@@ -64,7 +63,7 @@
 
         <div class="col">
           <label for="mailingZip">Mailing Zip</label>
-          <input type="number" class="form-control" id="mailingZip" name="mailingZip" value="" placeholder="mailingZip"
+          <input type="number" class="form-control" id="mailingZip" name="mailingZip" value="" placeholder="Mailing Zip"
             required>
         </div>
 
@@ -73,7 +72,7 @@
         <div class="col">
           <label for="shippingAddress">Shipping Address</label>
           <input type="text" class="form-control" id="shippingAddress" name="shippingAddress" value=""
-            placeholder="Mail Addresse" required>
+            placeholder="Shipping Address" required>
         </div>
 
         <div class="col">
@@ -118,8 +117,6 @@
       <div class="form-group mb-4">
         <button type="submit" class="btn btn-primary" value="register">Add </button>
       </div>
-
-
 
     </form>
     <div class="table-responsive">
@@ -205,12 +202,10 @@
                       <i class="bi bi-pencil"></i>
                     </a>
 
-                    <form action="/api/secure/medicalPractice/delete/<%= element._id %>?_method=DELETE" method="delete"
-                      class="position-relative">
-                      <button type="submit" class="btn btn-danger btn-small">
-                        <i class="bi bi-person-x"></i>
-                      </button>
-                    </form>
+                    <a href="/api/secure/medicalPractice/delete/<%= element._id %>"
+                      class="btn btn-danger btn-small">
+                      <i class="bi bi-person-x"></i>
+                    </a>
 
                   </div>
 

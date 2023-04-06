@@ -140,9 +140,7 @@ exports.editPost = async (req, res) => {
   try {
     await MedicalPatient.findByIdAndUpdate(req.params.id,{
       patientype: req.body.patientype,
-
       rxApproval: req.body.rxApproval,
-
       firstName:req.body.firstName,
       lastName:req.body.lastName,
       dateOfBirth:req.body.dateOfBirth,
@@ -159,7 +157,7 @@ exports.editPost = async (req, res) => {
       coordinatorEmail: req.body.coordinatorEmail,
       updatedAt: Date.now()
     });
-    res.redirect("/secure/home");
+    res.redirect(`/medicalpatient/edit/${req.params.id}`);
     
     console.log('redirected');
   } catch (error) {

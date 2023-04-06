@@ -19,8 +19,8 @@ const routeDefiner = (router, route_base) => {
     router.post(`${route_base}/add`, medicalPracticeController.postMedicalPractice);
     router.get(`${route_base}/view/:id`, medicalPracticeController.view);
     router.get(`${route_base}/edit/:id`, medicalPracticeController.edit);
-    router.put(`${route_base}/edit/:id`, medicalPracticeController.editPost);
-    router.delete(`${route_base}/delete/:id`, medicalPracticeController.deleteMedicalPractice);
+    router.post(`${route_base}/edit/:id`, medicalPracticeController.editPost);
+    router.get(`${route_base}/delete/:id`, medicalPracticeController.deleteMedicalPractice);
     router.post('/search', medicalPracticeController.searchPractice);
   };
 

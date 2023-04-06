@@ -8,60 +8,98 @@
       <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
-          <li class="breadcrumb-item active"><%= medicalPractices.firstName  %></li>
+          <li class="breadcrumb-item active"><%= medicalPractice.firstName  %></li>
         </ol>
       </nav>
     </div>
     <div class="col text-end fw-lighter">
       
-      <b>UserId:</b> <%= medicalPractices._id %>
+      <b>UserId:</b> <%= medicalPractice._id %>
     </div>
   </div>
 
 </div>
+<!-- <input name="medicalpractices" value="<%= medicalPractice._id %>">
+<input  name="medicalpractice" value="<%= medicalPractice.mailingAddress %>"> -->
 
 <ul class="list-group">
 
   <li class="list-group-item"> 
     <div class="row">
-      <div class="col" style="max-width: 140px"> <b>Name:</b></div>
-      <div class="col"><%= medicalPractices.firstName %> <%= medicalPractices.lastName %></div>
+      <div class="col" style="max-width: 140px"> <b>Practice Name:</b></div>
+      <div class="col"><%= medicalPractice.practiceName %></div>
     </div>
   </li>
 
   <li class="list-group-item"> 
     <div class="row">
-      <div class="col" style="max-width: 140px"> <b>Tel:</b></div>
-      <div class="col"><%= medicalPractices.tel %></div>
+      <div class="col" style="max-width: 140px"> <b>Mailing Address:</b></div>
+      <div class="col"><%= medicalPractice.mailingAddress %></div>
     </div>
   </li>
 
   <li class="list-group-item"> 
     <div class="row">
-      <div class="col" style="max-width: 140px"> <b>Email:</b></div>
-      <div class="col"><%= medicalPractices.email %></div>
+      <div class="col" style="max-width: 140px"> <b>Mailing City:</b></div>
+      <div class="col"><%= medicalPractice.mailingCity %></div>
     </div>
   </li>
 
   <li class="list-group-item"> 
     <div class="row">
-      <div class="col" style="max-width: 140px"> <b>Details:</b></div>
-      <div class="col"><%= medicalPractices.details %></div>
+      <div class="col" style="max-width: 140px"> <b>Mailing Zip:</b></div>
+      <div class="col"><%= medicalPractice.mailingZip %></div>
     </div>
   </li>
 
   <li class="list-group-item"> 
     <div class="row">
-      <div class="col" style="max-width: 140px"> <b>Date Created:</b></div>
-      <div class="col"><%= medicalPractices.createdAt %></div>
+      <div class="col" style="max-width: 140px"> <b>Shipping Address:</b></div>
+      <div class="col"><%= medicalPractice.shippingAddress %></div>
     </div>
   </li>
 
   <li class="list-group-item"> 
     <div class="row">
-      <div class="col" style="max-width: 140px"> <b>Date Modified:</b></div>
-      <div class="col"><%= medicalPractices.updatedAt %></div>
+      <div class="col" style="max-width: 140px"> <b>Shipping City:</b></div>
+      <div class="col"><%= medicalPractice.shippingCity %></div>
     </div>
   </li>
 
+  <li class="list-group-item"> 
+    <div class="row">
+      <div class="col" style="max-width: 140px"> <b>Shipping State:</b></div>
+      <div class="col"><%= medicalPractice.shippingState %></div>
+    </div>
+  </li>
+  <li class="list-group-item"> 
+    <div class="row">
+      <div class="col" style="max-width: 140px"> <b>Shipping Zip:</b></div>
+      <div class="col"><%= medicalPractice.shippingZip %></div>
+    </div>
+  </li>
+  <li class="list-group-item"> 
+    <div class="row">
+      <div class="col" style="max-width: 140px"> <b>Phone:</b></div>
+      <div class="col"><%= medicalPractice.phone %></div>
+    </div>
+  </li>
+  <li class="list-group-item"> 
+    <div class="row">
+      <div class="col" style="max-width: 140px"> <b>fax:</b></div>
+      <div class="col"><%= medicalPractice.fax %></div>
+    </div>
+  </li>
+  <li class="list-group-item"> 
+    <div class="row">
+      <div class="col" style="max-width: 140px"> <b>Website:</b></div>
+      <div class="col"><%= medicalPractice.website %></div>
+    </div>
+  </li>
+  <li class="list-group-item"> 
+    <div class="row">
+      <div class="col" style="max-width: 140px"> <b>Status:</b></div>
+      <div class="col"><%= medicalPractice.status %></div>
+    </div>
+  </li>
 </ul>

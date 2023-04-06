@@ -28,72 +28,76 @@
   <form action="/api/secure/medicalPatient/add" method="POST">
     <input type="hidden" name="medicalpractic" value="<%= medicalProfessional._id %>">
     <input type="hidden" name="name" value="<%= medicalProfessional.name %>">
+    
+      
     <div class="row form-group mb-4">
-      <div class="form-group">
+      <div class="col">
+      <div class="form-group"> 
         <label for="patientype">Patient Type</label>
         <select class="form-select" id="patientype" name="patientype">
           <option id="patientype" name="patientype" value="Referral">Referral</option>
           <option id="patientype" name="patientype" value="D2C">D2C</option>
         </select>
       </div>
-
-    <div class="row form-group mb-4">
+      </div>
       <div class="col">
         <label for="rxApproval">Rx Approval</label>
-        <input type="text" class="form-control" id="rxApproval" name="rxApproval" value="" placeholder="rxApproval"
+        <input type="text" class="form-control" id="rxApproval" name="rxApproval" value="" placeholder="Rx Approval"
           required>
       </div>
-
-      <div class="col">
-        <label for="firstName">First Name</label>
-        <input type="text" class="form-control" id="firstName" name="firstName" value="" placeholder="firstName"
-          required>
-      </div>
-
     </div>
     <div class="row form-group mb-4">
+      <div class="col">
+        <label for="firstName">First Name</label>
+        <input type="text" class="form-control" id="firstName" name="firstName" value="" placeholder="First Name"
+          required>
+      </div>
       <div class="col">
         <label for="lastName">Last Name</label>
         <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Last Name" required>
       </div>
+    
+
+    </div>
+    <div class="row form-group mb-4">
       <div class="col">
         <label for="dateOfBirth">Date Of Birth</label>
         <input type="text" class="form-control" id="dateOfBirth" name="dateOfBirth" value="" placeholder="Date Of Birth"
           required>
       </div>
-
-    </div>
-    <div class="row form-group mb-4">
       <div class="col">
         <label for="nummd">Nummd</label>
-        <input type="text" class="form-control" id="nummd" name="nummd" value="" placeholder="Nummd" required>
+        <input type="number" class="form-control" id="nummd" name="nummd" value="" placeholder="Nummd" required>
       </div>
+      
+    </div>
+    <div class="row form-group mb-4">
       <div class="col">
         <label for="city">City</label>
         <input type="text" class="form-control" id="city" name="city" value="" placeholder="City" required>
       </div>
-    </div>
-    <div class="row form-group mb-4">
       <div class="col">
         <label for="state">State</label>
         <input type="text" class="form-control" id="state" name="state" value="" placeholder="State" required>
       </div>
-      <div class="col">
-        <label for="zip">Zip</label>
-        <input type="text" class="form-control" id="zip" name="zip" value="" placeholder="Zip" required>
-      </div>
+     
     </div>
     <div class="row form-group mb-4">
+      <div class="col">
+        <label for="zip">Zip</label>
+        <input type="number" class="form-control" id="zip" name="zip" value="" placeholder="Zip" required>
+      </div>
       <div class="col">
         <label for="email">Email</label>
         <input type="text" class="form-control" id="email" name="email" value="" placeholder="Email" required>
       </div>
-      <div class="col">
-        <label for="phone">Phone</label>
-        <input type="text" class="form-control" id="phone" name="phone" value="" placeholder="Phone" required>
-      </div>
     </div>
     <div class="row form-group mb-4">
+      <div class="col">
+        <label for="phone">Phone</label>
+        <input type="number" class="form-control" id="phone" name="phone" value="" placeholder="Phone" required>
+      </div>
+      <div class="col">
       <div class="form-group">
         <label for="status">Status</label>
         <select class="form-select" id="status" name="status">
@@ -102,25 +106,26 @@
           <option  id="status" name="status" value="Removed">Removed</option>
         </select>
       </div>
+    </div>
+    </div>
+    <div class="row form-group mb-4">
       <div class="col">
         <label for="coordinatorFirstName">Coordinator FirstName</label>
         <input type="text" class="form-control" id="coordinatorFirstName" name="coordinatorFirstName" value=""
           placeholder="Coordinator FirstName" required>
       </div>
-    </div>
-    <div class="row form-group mb-4">
       <div class="col">
         <label for="coordinatorLastName">Coordinator LastName</label>
         <input type="text" class="form-control" id="coordinatorLastName" name="coordinatorLastName" value=""
           placeholder="Coordinator LastName" required>
       </div>
-      <div class="col">
-        <label for="coordinatorPhone">Coordinator Phone</label>
-        <input type="text" class="form-control" id="coordinatorPhone" name="coordinatorPhone" value=""
-          placeholder="Coordinator Phone" required>
-      </div>
     </div>
     <div class="row form-group mb-4">
+      <div class="col">
+        <label for="coordinatorPhone">Coordinator Phone</label>
+        <input type="number" class="form-control" id="coordinatorPhone" name="coordinatorPhone" value=""
+          placeholder="Coordinator Phone" required>
+      </div>
       <div class="col">
         <label for="coordinatorEmail">Coordinator Email</label>
         <input type="text" class="form-control" id="coordinatorEmail" name="coordinatorEmail" value=""
@@ -130,28 +135,25 @@
     <div class="form-group mb-4">
       <button type="submit" class="btn btn-primary">Add </button>
     </div>
-
   </form>
-
+  
   <div class="table-responsive">
-
     <div class="table-responsive">
-
       <table class="table table-striped table-sm">
         <thead>
           <tr>
-            <th scope="col">patientype</th>
-            <th scope="col">referredBy</th>
-            <th scope="col">rxApproval</th>
-            <th scope="col">firstName</th>
-            <th scope="col">lastName</th>
-            <th scope="col">dateOfBirth</th>
-            <th scope="col">nummd</th>
-            <th scope="col">city</th>
-            <th scope="col">state</th>
-            <th scope="col">zip</th>
-            <th scope="col">email</th>
-            <th scope="col">status</th>
+            <th scope="col">Patien Type</th>
+            <th scope="col">Referred By</th>
+            <th scope="col">Rx Approval</th>
+            <th scope="col">First Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">Date Of Birth</th>
+            <th scope="col">Nummd</th>
+            <th scope="col">City</th>
+            <th scope="col">State</th>
+            <th scope="col">Zip</th>
+            <th scope="col">Email</th>
+            <th scope="col">Status</th>
             <th scope="col">Coordinator FirstName</th>
             <th scope="col">Coordinator LastName</th>
             <th scope="col">Coordinator Phone</th>
@@ -159,8 +161,7 @@
        
           </tr>
         </thead>
-
-
+       
         <tbody>
           <% medicalPatient.forEach(element=> { %>
             <tr class="align-middle">
@@ -221,23 +222,19 @@
 
                 <div class="d-flex flex-row justify-content-end gap-2">
 
-                  <a href="/medicalprofessional/add/<%= element._id %>" type="button" class="btn btn-primary btn-small">
+                  <a href="/medicalpatient/view/<%= element._id %>" type="button" class="btn btn-primary btn-small">
                     <i class="bi bi-eye"></i>
                   </a>
 
-                  <a href="/edit/<%= element._id %>" type="button" class="btn btn-warning btn-small">
+                  <a href="/medicalpatient/edit/<%= element._id %>" type="button" class="btn btn-warning btn-small">
                     <i class="bi bi-pencil"></i>
                   </a>
 
-                  <form action="/edit/<%= element._id %>?_method=DELETE" method="POST" class="position-relative">
-                    <button type="submit" class="btn btn-danger btn-small">
-                      <i class="bi bi-person-x"></i>
-                    </button>
-                  </form>
-
+                  <a href="/api/secure/medicalPatient/delete/<%= element._id %>"
+                      class="btn btn-danger btn-small"> 
+                    <i class="bi bi-person-x"></i>
+                  </a>
                 </div>
-
-
               </td>
             </tr>
             <% }) %>
