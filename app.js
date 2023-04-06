@@ -69,7 +69,6 @@ throng({
     // });
     var flash = require("express-flash");
     app.use(flash());
-    
     app.use(function (req, res, next) {
       // if there's a flash message in the session request, make it available in the response, then delete it
       res.locals.flash = req.session.flash;

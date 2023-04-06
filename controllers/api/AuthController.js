@@ -10,7 +10,6 @@ const bcrypt = require("bcrypt");
 const moment = require("moment");
 const constants = require(global.PATHS.constants);
 
-
 module.exports.signup = async(req, res, next) => {
     const { firstName, lastName, username, email, password } = req.body;
     const salt = await bcrypt.genSalt();
@@ -24,10 +23,9 @@ module.exports.signup = async(req, res, next) => {
         })
         .then((created) => {
             tokens = makeTokens(created._id);
-            res.redirect("/public/login");;
+            res.status(200).json({ tokens, user: created });
         })
         .catch((e) => {
-            console.log("sd",e);
             const errors = errorHandler(e);
             res.status(400).json({ errors: errors });
         });

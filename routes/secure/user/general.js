@@ -15,7 +15,9 @@ const routeDefiner = (router, route_base) => {
         req.session.destroy();
         res.redirect('/');
     });
-
+    router.post(`${route_base}/add`, usersController.store);
+    router.post(`${route_base}/edit`, usersController.edit);
+    router.post(`${route_base}/me/edit`, usersController.changeProfile);
 }
 
 module.exports = routeDefiner

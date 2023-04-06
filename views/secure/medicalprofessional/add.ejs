@@ -15,7 +15,7 @@
       <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
-          <li class="breadcrumb-item active">New Profession</li>
+          <li class="breadcrumb-item active">New Professional</li>
         </ol>
       </nav>
     </div>
@@ -26,13 +26,13 @@
 
 
 <form action="/api/secure/medicalProfessional/add" method="POST">
-    <input type="hidden" name="medicalpractic" value="<%= medicalPractice._id %>" >
-    <input type="hidden" name="medicalphone" value="<%= medicalPractice.phone %>" >
+    <input type="hidden" name="medicalpractice" value="<%= medicalPractice._id %>" >
+    <input type="hidden" name="medicalphone" value="<%=medicalPractice.phone%>" >
     <input type="hidden" name="medicalfax" value="<%= medicalPractice.fax %>" >
   <div class="row form-group mb-4">
     <div class="col">
       <label for="name">Practice Name</label>
-      <input type="text" class="form-control" id="name" name="name" value="" placeholder="Profession Name" required>
+      <input type="text" class="form-control" id="name" name="name" value="" placeholder="Practice Name" required>
     </div>
 
     <div class="col">
@@ -44,34 +44,41 @@
   <div class="row form-group mb-4">
     <div class="col">
       <label for="email">Email</label>
-      <input type="text" class="form-control" id="email" name="email" value="" placeholder="email" required>
+      <input type="text" class="form-control" id="email" name="email" value="" placeholder="Email" required>
     </div>
-
     <div class="col">
+    <div class="form-group">
       <label for="medProType">MedPro Type</label>
-      <input type="text" class="form-control" id="medProType" name="medProType" value="" placeholder="medProType" required>
+      <select class="form-select" id="medProType" name="medProType">
+        <option id="medProType" name="medProType" value="MD/NP">MD/NP</option>
+        <option id="medProType" name="medProType"value="Onboarded">PT</option>
+        <option id="medProType" name="medProType"value="Nurse">Nurse</option>
+        <option id="medProType" name="medProType"value="Admin">Admin</option>
+      </select>
     </div>
-  
+    </div>
   </div>
   <div class="row form-group mb-4">
     <div class="col">
-      <label for="Phone">Phone</label>
-      <input type="text" class="form-control" id="phone" name="phone" readonly value="<%= medicalPractice.phone %>" placeholder="medProType" required>
+      <label for="lastRef">Last Ref</label>
+      <input type="text" class="form-control" id="lastRef" name="lastRef" value="" placeholder="Last Ref" required>
     </div>
-    <div class="col">
-      <label for="lastRef">lastRef</label>
-      <input type="text" class="form-control" id="lastRef" name="lastRef" value="" placeholder="lastRef" required>
-    </div>
-    
-  </div>
-  <div class="row form-group mb-4">
     <div class="col">
       <label for="fax">Fax</label>
-      <input type="text" class="form-control" id="fax" name="fax" readonly value="<%= medicalPractice.fax %>" placeholder="Fax" required>
+      <input type="number" class="form-control" id="fax" name="fax" readonly value="<%=medicalPractice.fax%>" placeholder="Fax" required>
     </div>
+  </div>
+  <div class="row form-group mb-4">
     <div class="col">
-      <label for="Status">Status</label>
-      <input type="text" class="form-control" id="status" name="status" value="" placeholder="Status" required>
+    <div class="form-group">
+      <label for="status">Status</label>
+      <select class="form-select" id="status" name="status">
+        <option id="status" name="status" value="Active">Active</option>
+        <option id="status" name="status"value="Onboarded">Onboarded</option>
+        <option id="status" name="status"value="Dormant">Dormant</option>
+        <option id="status" name="status"value="Removed">Removed</option>
+      </select>
+    </div>
     </div>
   </div>
   <div class="form-group mb-4">
@@ -117,7 +124,10 @@
                 <a href="/medicalprofessional/add/<%= element._id %>" type="button" class="btn btn-primary btn-small">
                   <i class="bi bi-eye"></i>
                 </a>
-  
+                <a href="/medicalpatient/add/<%= element._id %>" type="button"
+                  class="btn btn-primary btn-small a">
+                  <small>Patient</small>
+                </a>
                 <a href="/edit/<%= element._id %>" type="button" class="btn btn-warning btn-small">
                   <i class="bi bi-pencil"></i>
                 </a>

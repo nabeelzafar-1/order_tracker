@@ -15,15 +15,15 @@ const medicalProfessionalController = controllers.get(
  *  MedicalPractice Routes 
 */
 const routeDefiner = (router, route_base) => {
-    router.get(`${route_base}/add`, medicalProfessionalController.addMedicalProfessional);
+    router.get(`${route_base}/add/:id`, medicalProfessionalController.addMedicalProfessional);
     router.post(`${route_base}/add`, medicalProfessionalController.postMedicalProfessional);
     router.get(`${route_base}/view/:id`, medicalProfessionalController.view);
     router.get(`${route_base}/edit/:id`, medicalProfessionalController.edit);
     router.put(`${route_base}/edit/:id`, medicalProfessionalController.editPost);
     router.delete(`${route_base}/edit/:id`, medicalProfessionalController.deleteProfessional);
+    router.post('/search', medicalProfessionalController.searchProfessional);
   };
 
-// router.post('/search', customerController.searchCustomers);
 
 
 module.exports = routeDefiner;

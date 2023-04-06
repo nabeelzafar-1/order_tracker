@@ -1,5 +1,4 @@
 const MedicalProfessional = require("../../models/medicalProfessional");
-const Customer  = require("../../models/medicalPractice");
 const mongoose = require("mongoose");
 
 /**
@@ -10,7 +9,7 @@ const mongoose = require("mongoose");
 exports.about = async (req, res) => {
     const locals = {
       title: 'About',
-      description: 'Free NodeJs User Management System'
+      description: 'Order Tracker Management System'
     }
 
     try {
@@ -23,8 +22,8 @@ exports.about = async (req, res) => {
 
 exports.addMedicalprofessional = async (req, res) => {
   const locals = {
-    title: "Add New Customer - NodeJs",
-    description: "Free NodeJs User Management System",
+    title: "Add New",
+    description: "Order Tracker Management System",
   };
 
   res.render("/medicalprofessional", locals);
@@ -36,8 +35,8 @@ exports.addMedicalprofessional = async (req, res) => {
  */
 exports.addMedicalProfessional = async (req, res) => {
   const locals = {
-    title: "Add New Customer - NodeJs",
-    description: "Free NodeJs User Management System",
+    title: "Add New",
+    description: "Order Tracker Management System",
   };
 
   res.render("medicalprofessional/add", locals);
@@ -54,7 +53,7 @@ exports.postMedicalProfessional = async (req, res) => {
       name: req.body.name,
       lastName:req.body.lastName,
       medProType: req.body.medProType,
-      MedicalPractice:req.body.medicalpractic,
+      MedicalPractice:req.body.medicalpractice,
       phone:req.body.medicalphone,
       fax:req.body.medicalfax,
       email: req.body.email,
@@ -66,8 +65,7 @@ exports.postMedicalProfessional = async (req, res) => {
   try {
     await MedicalProfessional.create(newMedicalProfessional);
     await req.flash("info", "New medical professional has been added.");
-
-    res.redirect("/medicalprofessional/add/:id");
+    res.redirect(`/secure/home`);
   } catch (error) {
     console.log(error);
   }
@@ -76,7 +74,7 @@ exports.postMedicalProfessional = async (req, res) => {
 
 /**
  * GET /
- * Customer Data 
+ * View Data 
 */
 exports.view = async (req, res) => {
 
@@ -98,7 +96,7 @@ exports.view = async (req, res) => {
 
 /**
  * GET /
- * Edit Customer Data 
+ * Edit  Data 
 */
 exports.edit = async (req, res) => {
 
@@ -106,8 +104,8 @@ exports.edit = async (req, res) => {
     const professional = await MedicalProfessional.findOne({ _id: req.params.id })
 
     const locals = {
-      title: "Edit Customer Data",
-      description: "Free NodeJs User Management System",
+      title: "Edit Data",
+      description: "Order Tracker Management System",
     };
 
     res.render('medicalprofessional/edit', {
@@ -126,7 +124,7 @@ exports.edit = async (req, res) => {
 
 /**
  * GET /
- * Update Customer Data 
+ * Update  Data 
 */
 exports.editPost = async (req, res) => {
   try {
@@ -134,6 +132,8 @@ exports.editPost = async (req, res) => {
       name: req.body.name,
       lastName:req.body.lastName,
       medProType: req.body.medProType,
+      phone:req.body.medicalphone,
+      fax:req.body.medicalfax,
       email: req.body.email,
       lastRef: req.body.lastRef,
       status: req.body.status,
@@ -150,7 +150,7 @@ exports.editPost = async (req, res) => {
 
 /**
  * Delete /
- * Delete Customer Data 
+ * Delete  Data 
 */
 exports.deleteProfessional = async (req, res) => {
   try {
@@ -159,4 +159,40 @@ exports.deleteProfessional = async (req, res) => {
   } catch (error) {
     console.log(error);
   }
+}
+
+/**
+ * Get /
+ * Search Professional Data 
+*/
+
+exports.searchProfessional = async (req, res) => {
+
+  const locals = {
+    title: "Search Professional Data",
+    description: "Order Tracker Management System",
+  };
+
+  try {
+    let searchTerm = req.body.searchTerm;
+    const searchNoSpecialChar = searchTerm.replace(/[^a-zA-Z0-9 ]/g, "");
+
+    const professionals = await MedicalProfessional.find({
+      $or: [
+        { name: { $regex: new RegExp(searchNoSpecialChar, "i") }},
+        { lastName: { $regex: new RegExp(searchNoSpecialChar, "i") }},
+        { email: { $regex: new RegExp(searchNoSpecialChar, "i") }},
+        { phone: { $regex: new RegExp(searchNoSpecialChar, "i") }},
+      ]
+    });
+
+    res.render("search", {
+      professionals,
+      locals
+    })
+    
+  } catch (error) {
+    console.log(error);
+  }
+
 }

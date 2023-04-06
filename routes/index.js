@@ -11,6 +11,7 @@ const authMiddleware = middlewares.get("auth.auth");
 const ROUTE_FILE_EXTENSION = ".js";
 const MedicalPractice = require("../models/medicalPractice");
 const MedicalProfessional = require("../models/medicalProfessional");
+const MedicalPatient = require("../models/medicalPatient");
 /**
  * recursively builds routes for all files in a directory and its subdirectories
  * @param routePath: path to directory to read files of and build routes for
@@ -59,36 +60,48 @@ const routeInitalizer = (app) => {
     app.get('/', (req, res, next) => {
         // console.log("in route ///", req.flash('error'));
         if (req.session && req.session.user) {
-            res.redirect('secure/home')
+            res.redirect('/secure/home')
         } else {
             renderController.render(res, 'public/login', { page: 'login' })
         }
+    });
+    app.get('/forbidden', (req, res, next) => {
+        // console.log("in route ///", req.flash('error'));
+        renderController.render(res, '403', { page: '403' })
     });
     app.get('/register', (req, res, next) => {
       renderController.render(res, 'public/register', { page: 'register' })
     });
     app.get('/medicalpractic/add', async(req, res, next) => {
-      const medicalPractices = await MedicalPractice.find({})
-      console.log("cu",medicalPractices)
-      renderController.render(res, 'secure/medicalPractices/add', { page: 'add', medicalPractices})
-    
-
+      const medicalPractice = await MedicalPractice.find({})
+      console.log("cu",medicalPractice)
+      renderController.render(res, 'secure/medicalPractices/add', { page: 'add', medicalPractice})
     });
+    app.get('/view/:id', async(req, res, next) => {
+      const medicalPractice = await MedicalPractice.find({})
+      console.log("view",medicalPractice)
+      renderController.render(res, 'secure/medicalPractices/view', { page: 'view', medicalPractice})
+    });
+    app.get('/edit/:id', async(req, res, next) => {
+      const medicalPractice = await MedicalPractice.findOne({_id:req.params.id})
+      console.log("edit",medicalPractice)
+      renderController.render(res, 'secure/medicalPractices/edit', { page: 'edit', medicalPractice})
+    });
+ 
 
     app.get('/medicalprofessional/add/:id', async(req, res, next) => {
         const medicalPractice = await MedicalPractice.findOne({_id:req.params.id})
         const medicalProfessional = await MedicalProfessional.find({})
-        console.log("md",medicalProfessional)
+        console.log("md",medicalPractice)
       renderController.render(res, 'secure/medicalprofessional/add', { page: 'add', medicalPractice,medicalProfessional })
     });
-    // app.get('/', (req, res, next) => {
-    //   renderController.render(res, '/coutomer', { page: 'coutomer' })
-    // });
-    app.get('/forbidden', (req, res, next) => {
-        // console.log("in route ///", req.flash('error'));
-        renderController.render(res, '403', { page: '403' })
-    });
 
+    app.get('/medicalpatient/add/:id', async(req, res, next) => {
+      const medicalProfessional = await MedicalProfessional.findOne({_id:req.params.id})
+      const medicalPatient = await MedicalPatient.find({})
+      console.log("Patient",medicalPatient)
+    renderController.render(res, 'secure/medicalPatient/add', { page: 'add', medicalPatient,medicalProfessional })
+  });
     app.use('/api', buildRoutesForPath(`${ROUTES_PATH}/api`));
     app.use('/public', buildRoutesForPath(`${ROUTES_PATH}/public`));
     app.use('/secure', userMiddleware, buildRoutesForPath(`${ROUTES_PATH}/secure`));

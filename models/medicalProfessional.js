@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-// const { professionalType, professionalStatus } = require('../config/medical.config');
+const { professionalType, professionalStatus } = require('../config/medical.config');
 
 const medicalProfessionalSchema = mongoose.Schema(
   {
@@ -15,7 +15,7 @@ const medicalProfessionalSchema = mongoose.Schema(
     },
     medProType: {
       type: String,
-      // default: professionalType,
+      default: professionalType,
     },
     email: {
       type: String,
@@ -23,12 +23,10 @@ const medicalProfessionalSchema = mongoose.Schema(
       lowercase: true,
     },
     phone:{
-        type: String,
-        trim:true,
+        type: Number,
     },
     fax:{
-      type: String,
-        trim:true,
+      type: Number, 
     },
     lastRef: {
       type: Date,
@@ -41,7 +39,7 @@ const medicalProfessionalSchema = mongoose.Schema(
 
     status: {
       type: String,
-      // default: professionalStatus,
+      default: professionalStatus,
     },
   },
   {

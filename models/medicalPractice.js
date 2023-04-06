@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-// const { medicalStatus } = require('../config/medical.config');
+const { medicalStatus } = require('../config/medical.config');
 const Schema = mongoose.Schema;
 const MedicalPracticeSchema = new Schema(
   {
@@ -40,42 +40,6 @@ const MedicalPracticeSchema = new Schema(
       type: Number,
       trim: true,
     },
-    //         type:String,
-    //         trim: true,
-    //       },
-    //       practiceCity: {
-    //         type:String,
-    //         trim: true,
-    //       },
-    //       practiceState: {
-    //         type:String,
-    //         trim: true,
-    //       },
-    //       practiceZip: {
-    //         type:Number,
-    //         trim: true,
-    //       }
-    //   },
-
-    // shippingAddress: 
-    //   {
-    //     practiceAddress: {
-    //       type:String,
-    //       trim: true,
-    //     },
-    //     practiceCity: {
-    //       type:String,
-    //       trim: true,
-    //     },
-    //     practiceState: {
-    //       type:String,
-    //       trim: true,
-    //     },
-    //     practiceZip: {
-    //       type:Number,
-    //       trim: true,
-    //     }
-    //   },
   phone: {
       type: Number,
       trim: true
@@ -90,7 +54,7 @@ const MedicalPracticeSchema = new Schema(
   } ,
   status:{
     type: String,
-    // default: medicalStatus,
+    default: medicalStatus,
   }
   
 },

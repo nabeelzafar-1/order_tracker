@@ -5,15 +5,10 @@ const queries = require(paths.queries);
 const charts = queries.get("graph");
 const controllers = require(PATHS.controllers);
 const render = controllers.get("RenderController");
-const Customer = require("../models/medicalPractice");
 
 module.exports.home = async (req, res, next) => {
   //Top Devices
-  // const messages = await req.consumeFlash('info');
-  let perPage = 12;
-  let page = req.query.page || 1;
 
-  
   const total = await Usersession.countDocuments();
   try {
     const devices = await charts.topDevice();
@@ -27,9 +22,6 @@ module.exports.home = async (req, res, next) => {
         deviceChart[2] = (item.count / total) * 100;
       }
     });
-
-
- 
     // Weekly Users Time Per Day (Hours)
     const { days, timePerday } = await charts.userByTime();
 

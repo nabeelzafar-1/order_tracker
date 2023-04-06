@@ -1,54 +1,6 @@
 const MedicalPractice = require("../../models/medicalPractice");
 const mongoose = require("mongoose");
 
-/**
- * GET /
- * Homepage
- */
-// exports.homepage = async (req, res) => {
-
-//     const messages = await req.consumeFlash('info');
-//     const locals = {
-//       title: 'NodeJs',
-//       description: 'Free NodeJs User Management System'
-//     }
-
-//     let perPage = 12;
-//     let page = req.query.page || 1;
-
-//     try {
-//       const medicalPractices = await MedicalPractice.aggregate([ { $sort: { createdAt: -1 } } ])
-//         .skip(perPage * page - perPage)
-//         .limit(perPage)
-//         .exec(); 
-//       const count = await MedicalPractice.count();
-
-//       res.render('', {
-//         locals,
-//         medicalPractices,
-//         current: page,
-//         pages: Math.ceil(count / perPage),
-//         messages
-//       });
-
-//     } catch (error) {
-//       console.log(error);
-//     }
-// }
-// exports.homepage = async (req, res) => {
-//     const messages = await req.consumeFlash('info');
-//     const locals = {
-//       title: 'NodeJs',
-//       description: 'Free NodeJs User Management System'
-//     }
-
-//     try {
-//       const MedicalPractices = await MedicalPractice.find({}).limit(22);
-//       res.render('index', { locals, messages, MedicalPractices } );
-//     } catch (error) {
-//       console.log(error);
-//     }
-// }
 
 /**
  * GET /
@@ -57,7 +9,7 @@ const mongoose = require("mongoose");
 exports.about = async (req, res) => {
     const locals = {
       title: 'About',
-      description: 'Free NodeJs User Management System'
+      description: 'Order Tracker Management System'
     }
 
     try {
@@ -79,7 +31,7 @@ exports.about = async (req, res) => {
 exports.addMedicalPractice = async (req, res) => {
   const locals = {
     title: "Add New MedicalPractice - NodeJs",
-    description: "Free NodeJs User Management System",
+    description: "Order Tracker Management System",
   };
 
   res.render("MedicalPractice/add", locals);
@@ -130,7 +82,7 @@ exports.view = async (req, res) => {
 
     const locals = {
       title: "View MedicalPractice Data",
-      description: "Free NodeJs User Management System",
+      description: "Order Tracker Management System",
     };
 
     res.render('MedicalPractice/view', {
@@ -157,10 +109,10 @@ exports.edit = async (req, res) => {
 
     const locals = {
       title: "Edit MedicalPractice Data",
-      description: "Free NodeJs User Management System",
+      description: "Order Tracker Management System",
     };
 
-    res.render('MedicalPractice/edit', {
+    res.render(`/edit/${req.params.id}`, {
       locals,
       medicalPractice
     })
@@ -184,7 +136,7 @@ exports.editPost = async (req, res) => {
       practiceName: req.body.practiceName,
     mailingAddress:req.body.mailingAddress,
     mailingCity:req.body.mailingCity,
-    mailingeState:req.body.mailingeState,
+    mailingState:req.body.mailingState,
     mailingZip:req.body.mailingZip,
     shippingAddress:req.body.shippingAddress,
     shippingCity:req.body.shippingCity,
@@ -212,10 +164,43 @@ exports.editPost = async (req, res) => {
 exports.deleteMedicalPractice = async (req, res) => {
   try {
     await MedicalPractice.deleteOne({ _id: req.params.id });
-    res.redirect("/")
+    res.redirect("/medicalpractic/add")
   } catch (error) {
     console.log(error);
   }
 }
 
 
+/**
+ * Get /
+ * Search Practice Data 
+*/
+
+exports.searchPractice = async (req, res) => {
+
+  const locals = {
+    title: "Search  Data",
+    description: "Order Tracker Management System",
+  };
+
+  try {
+    let searchTerm = req.body.searchTerm;
+    const searchNoSpecialChar = searchTerm.replace(/[^a-zA-Z0-9 ]/g, "");
+
+    const s = await MedicalPractice.find({
+      $or: [
+        { practiceName: { $regex: new RegExp(searchNoSpecialChar, "i") }},
+        { mailingAddress: { $regex: new RegExp(searchNoSpecialChar, "i") }},
+      ]
+    });
+
+    res.render("search", {
+      s,
+      locals
+    })
+    
+  } catch (error) {
+    console.log(error);
+  }
+
+}

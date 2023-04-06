@@ -66,7 +66,7 @@ module.exports.login = async(req, res, next) => {
                             req.session.cookie.maxAge = 1000 * 60 * 60 * 24 * 30 * 12;
                         }
                         req.session.user = user;
-                        res.redirect('secure/home')
+                        res.redirect('/secure/home')
                     }
                 });
             }

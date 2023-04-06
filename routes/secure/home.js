@@ -10,9 +10,6 @@ const models = require(PATHS.models);
 const User = models.get("User");
 
 const routeDefiner = (router, route_base) => {
-  router.get(`${route_base}`, (req, res, next) => {
-    const { limit, skip } = req.params;    
-});
   router.get(`${route_base}/home`, homeController.home);
 };
 
